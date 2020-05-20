@@ -1,7 +1,10 @@
 import React from 'react';
+import ListaPage from './ListaPage';
 
 function App() {
-  return <h1>ReactJS, Template!</h1>
+  return <div> <ListaPage/>
+  <table></table>
+  </div>
 }
 
 export default App;
