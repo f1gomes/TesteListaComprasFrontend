@@ -3,7 +3,7 @@
 import React from 'react';
 
 function Header() {
-    return <h1>React,</h1>
+    return <h1>Lista de Compras</h1>
 }
 
 export default Header;
