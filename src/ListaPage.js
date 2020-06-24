@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect , useState } from 'react';
 import Header from './Header';
+import api from './api';
 
-const produtos = [
+/*const produtos = [
     {
         id:1,
         nome:"Arroz",
@@ -14,9 +15,22 @@ const produtos = [
         quantidade:2,
         comprado:true
     },
-]
+]*/
 
 function ListaPage(){
+
+    const [produtos, setProdutos] = useState([]);
+
+    async function loadData(){
+        const response = await api.get('/');
+        const produtos = response.data;
+        setProdutos(produtos);
+        
+    }
+
+    useEffect(loadData, []);
+    
+
 return <div>
     <Header/>
     <table>{
