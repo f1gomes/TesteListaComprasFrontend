@@ -1,21 +1,7 @@
-import React, { useEffect , useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import api from './api';
-
-/*const produtos = [
-    {
-        id:1,
-        nome:"Arroz",
-        quantidade:10,
-        comprado:false
-    },
-     {
-        id:2,
-        nome:"Feijão",
-        quantidade:2,
-        comprado:true
-    },
-]*/
+import { useMemo } from 'react';
 
 function ListaPage(){
 
@@ -23,24 +9,21 @@ function ListaPage(){
 
     async function loadData(){
         const response = await api.get('/');
-        const produtos = response.data;
-        setProdutos(produtos);
-        
+        setProdutos(response.data);
     }
 
-    useEffect(loadData, []);
+    useMemo(loadData, []);
     
-
 return <div>
     <Header/>
+    {/*<button onClick= {loadData}> Carregar dados</button>*/}
     <table>{
-        produtos.map(item=>(
+        produtos.map(item => (
             <tr>
                 <td>{item.id}</td>
                 <td>{item.nome}</td>
                 <td>{item.quantidade}</td>
                 <td>{item.comprado}</td>
-
             </tr>
         ))
         }

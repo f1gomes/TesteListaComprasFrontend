@@ -1,8 +1,9 @@
 import React from 'react';
 import ListaPage from './ListaPage';
-
+import TestePage from './TestePage';
 function App() {
-  return <div> <ListaPage/>
+    //return <div> <TestePage/>
+    return <div> <ListaPage/>
   <table></table>
   </div>
 }
