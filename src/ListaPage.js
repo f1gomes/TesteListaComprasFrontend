@@ -6,18 +6,21 @@ import { useMemo } from 'react';
 function ListaPage(){
 
     const [produtos, setProdutos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     async function loadData(){
         const response = await api.get('/');
         setProdutos(response.data);
+        setLoading(false);
     }
 
     useMemo(loadData, []);
     
 return <div>
     <Header/>
-    {/*<button onClick= {loadData}> Carregar dados</button>*/}
-    <table>{
+    {loading == true 
+    ? <span>Carregando Lista...</span> 
+    : <table>{
         produtos.map(item => (
             <tr>
                 <td>{item.id}</td>
@@ -28,7 +31,7 @@ return <div>
         ))
         }
     </table>
-
+    }
 </div>
 }
 
