@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from './Header';
 import api from './api';
-import { useMemo } from 'react';
+import {Table, TableRow, TableCell } from '@material-ui/core';
+
+
+//yarn add @material-ui/core
 
 function ListaPage(){
 
@@ -16,23 +19,24 @@ function ListaPage(){
 
     useMemo(loadData, []);
     
-return <div>
+return <>
     <Header/>
     {loading == true 
     ? <span>Carregando Lista...</span> 
-    : <table>{
-        produtos.map(item => (
-            <tr>
-                <td>{item.id}</td>
-                <td>{item.nome}</td>
-                <td>{item.quantidade}</td>
-                <td>{item.comprado}</td>
-            </tr>
+    :
+     <Table style ={{marginTop:'80px'}}>
+       {
+       produtos.map(item => (
+            <TableRow>
+                <TableCell>{item.id}</TableCell>
+                <TableCell>{item.nome}</TableCell>
+                <TableCell>{item.quantidade}</TableCell>
+                <TableCell>{item.comprado}</TableCell>
+            </TableRow>
         ))
         }
-    </table>
-    }
-</div>
+    </Table>
+     }
+</>
 }
-
 export default ListaPage;
